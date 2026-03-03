@@ -415,6 +415,9 @@ function buildScrapedFileName(scrapeData, mapping, originalFileName) {
   return originalFileName;
 }
 
+/**
+ * 获取视频详情
+ */
 async function detail(params) {
   try {
     const videoId = params.videoId || "";
@@ -708,7 +711,7 @@ async function detail(params) {
 
         if (episodes.length > 0) {
           let finalSourceName = sourceName;
-          if (driveInfo.driveType === "quark") {
+          if (DRIVE_TYPE_CONFIG.includes(driveInfo.driveType)) {
             finalSourceName = `${displayName}-${sourceName}`;
           }
 
@@ -787,6 +790,9 @@ async function detail(params) {
   }
 }
 
+/**
+ * 搜索视频
+ */
 async function search(params) {
   try {
     const keyword = params.keyword || "";
